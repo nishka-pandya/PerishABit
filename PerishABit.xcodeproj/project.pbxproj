@@ -11,9 +11,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BDAE8A682FE9EF23005BE271 /* PerisHabits */ = {
+		BDAE8A682FE9EF23005BE271 /* PerishABit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PerisHabits;
+			path = PerishABit;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		BDAE8A5D2FE9EF23005BE271 = {
 			isa = PBXGroup;
 			children = (
-				BDAE8A682FE9EF23005BE271 /* PerisHabits */,
+				BDAE8A682FE9EF23005BE271 /* PerishABit */,
 				BDAE8A672FE9EF23005BE271 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				BDAE8A682FE9EF23005BE271 /* PerisHabits */,
+				BDAE8A682FE9EF23005BE271 /* PerishABit */,
 			);
 			name = PerisHabits;
 			packageProductDependencies = (
