@@ -14,7 +14,7 @@ struct PerisHabitsApp: App {
         WindowGroup {
             ContentView()
                 .modelContainer(for: FoodItemInfo.self)
+                // Connects SwiftData and SwiftUI using the modifier and the FoodItemIndo model
         }
-        //.modelContainer(for: FoodItemInfo.self)
     }
 }

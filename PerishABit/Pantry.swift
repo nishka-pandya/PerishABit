@@ -10,13 +10,20 @@ import SwiftData
 
 struct Pantry: View {
     
+    // @Query property wrapper reads data from model. It tells SwiftUI about any changes to the model so the view can update accordingly. Fetches FoodItemInfo instances stored in SwiftData
+    
     @Query private var foods: [FoodItemInfo]
+    
+    // .modelContainer modifier inserts a modelContext into the SwiftUI environment, and the modeContext is accessible to all views under the container
+    // Provides a connection between the view and the model container so that you can fetch, insert, and delete items in the container. Tracks all objects that have been created, modified, and deleted.
     @Environment(\.modelContext) private var context
     @State private var newFoodItem = ""
     @State private var newUseByDate = Date.now
     @State private var newQuantity: Int = 1
     @State private var newType = ""
-    @State private var selectedFood: FoodItemInfo?
+    
+    // To keep track of food item selected
+    @State private var selectedFood: FoodItemInfo? // Optional type, it might hold an instance of FoodItemInfo or nothing
     
     private var foodTypes: Dictionary = ["Leftovers": "Highest", "Dairy":"Medium-High", "Fresh Produce": "Medium", "Meats": "High", "Seafood": "High", "Condiments": "Lower", "Fruit": "Lower"]
     
@@ -37,7 +44,11 @@ struct Pantry: View {
                     .brightness(-0.4)
                     .background(.green.opacity(0.45))
             
+                // SwiftData provides each instance of a model type with its own identity separate from its data. It is no longer required to use the id since @Model provides an identifier
+                
+                // Loads rows of food items added by user
                 List{
+                    // foods is the
                     ForEach(foods) { food in
                         HStack{
                             Text(food.name)
@@ -48,12 +59,12 @@ struct Pantry: View {
                                 .font(.title3)
                                 .fontDesign(.serif)
                         }
-                        
+                        // Ability to select already existing food item
                         .onTapGesture {
                             selectedFood = food
                         }
                     }
-                    .onDelete(perform: deleteItem)
+                    .onDelete(perform: deleteItem) // Modifier to allow the user to swipe to delete an item in the list. Expects each row to have a unique identifier. Therefore use ForEach inside the list to tell SwiftUI to treat each row uniquely.
                     
                 }
                 .padding(.vertical, 60)
@@ -61,12 +72,13 @@ struct Pantry: View {
                 .shadow(radius:15)
                 //.navigationTitle("Pantry")
                 //.navigationBarTitleDisplayMode(.inline)
-                .sheet(item: $selectedFood){ food in
-                    NavigationStack {
+                .sheet(item: $selectedFood){ food in // Modal interface that animantes from the bottom of the screen, pushing the current view into the background
+                    NavigationStack { // Navigation capabilities
                         EditFoodView(food: food)
                     }
                     
                 }
+                // Allows to place content over List without being covered 
                 .safeAreaInset(edge: .bottom){
                     VStack(alignment: .center, spacing: 20){
                         Text("New Item")
@@ -126,6 +138,8 @@ struct Pantry: View {
                         
                         Button("Save"){
                             let newFood = FoodItemInfo(name: newFoodItem, useByDate: newUseByDate, quantity: newQuantity, type: newType)
+                            
+                            // Inserts new FoodItemInfo into the ModelContext
                             context.insert(newFood)
                             newFoodItem = ""
                             newUseByDate = .now
@@ -148,9 +162,12 @@ struct Pantry: View {
         
     }
     
+    
     func deleteItem(at offsets: IndexSet){
         for index in offsets {
             let itemToDelete = foods[index]
+            
+            // Deletes itemToDelete from ModelContext
             context.delete(itemToDelete)
         }
     }
@@ -160,5 +177,6 @@ struct Pantry: View {
     #Preview {
         Pantry()
             .modelContainer(for: FoodItemInfo.self, inMemory: true)
+            // inMemory ensures that the interactive preview also uses SwiftData for data management
     }
 
