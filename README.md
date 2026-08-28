@@ -22,9 +22,9 @@ food items to use. It is designed to reduce food waste by encouraging young adul
 
 # Screenshots 
 
-<img width="600" height="1311" alt="PerishABit_Screenshot1" src="https://github.com/user-attachments/assets/c0d870db-c556-4d43-a844-56156dc2c8d6" />
-<img width="1206" height="2622" alt="PerishABit_Screenshot2" src="https://github.com/user-attachments/assets/b8064af5-8f99-4d76-ae48-602b24f90d8b" />
-<img width="1206" height="2622" alt="PerishABit_Screenshot3" src="https://github.com/user-attachments/assets/c12095c8-23f5-4898-a895-b61249b80284" />
+<img width="150" height="327" alt="PerishABit_Screenshot1" src="https://github.com/user-attachments/assets/c0d870db-c556-4d43-a844-56156dc2c8d6" />
+<img width="150" height="327" alt="PerishABit_Screenshot2" src="https://github.com/user-attachments/assets/b8064af5-8f99-4d76-ae48-602b24f90d8b" />
+<img width="150" height="327" alt="PerishABit_Screenshot3" src="https://github.com/user-attachments/assets/c12095c8-23f5-4898-a895-b61249b80284" />
 
 
 # Future Improvements 
